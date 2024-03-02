@@ -1,0 +1,28 @@
+name: Docker Build & Publish
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build Docker
+    runs-on: self-hosted
+
+    steps:
+      - name: Check out repository code 🛎️
+        uses: actions/checkout@v4
+
+      - name: Delete prev container
+        run: docker rm -f ${{ github.event.repository.name }}
+        continue-on-error: true
+
+      - name: Delete prev image
+        run: docker rmi ${{ github.event.repository.name }}
+        continue-on-error: true
+
+      - name: Build Docker image
+        run: docker build -t ${{ github.event.repository.name }} .
+
+      - name: Run Docker container
+        run: docker run --net shopnetwork --ip 172.24.0.13 --name ${{ github.event.repository.name }} -p 3000:3000 ${{ github.event.repository.name }}:latest
