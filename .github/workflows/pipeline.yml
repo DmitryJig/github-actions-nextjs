@@ -9,21 +9,12 @@ jobs:
     name: Build Docker
     runs-on: self-hosted
 
-    strategy:
-      matrix:
-        node-version: [18-alpine]
-
     steps:
       - name: Check out repository code 🛎️
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build
+      - name: Use Node.js
+        run: npm ci
 
       - name: Delete prev container
         run: docker rm -f ${{ github.event.repository.name }}
