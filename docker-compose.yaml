@@ -6,8 +6,7 @@ services:
     container_name: github-actions-nextjs
     networks:
       - shopnetwork
-    
     ports:
-      -"3000:3000"
+      - "3000:3000"
 networks:
   shopnetwork:
