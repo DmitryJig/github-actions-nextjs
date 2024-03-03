@@ -24,8 +24,11 @@ jobs:
         run: docker rmi ${{ github.event.repository.name }}
         continue-on-error: true
 
-      - name: Build Docker image
-        run: docker compose build
+      - name: build project
+        run: npm run build
+
+      # - name: Build Docker image
+      #   run: docker compose build
 
       # - name: Build Docker image
       #   run: docker build -t ${{ github.event.repository.name }} .
