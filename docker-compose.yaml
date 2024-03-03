@@ -1,8 +1,13 @@
+version: '3.8'
+
 services:
   frontend:
+    build: .
+    container_name: github-actions-nextjs
     networks:
       - shopnetwork
-    container_name: github-actions-nextjs
-    build: .
+    
     ports:
       -"3000:3000"
+networks:
+  shopnetwork:
