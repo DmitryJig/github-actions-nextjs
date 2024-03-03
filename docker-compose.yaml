@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build: .
+    networks:
+      - shopnetwork
+    container_name: github-actions-nextjs
+    ports:
+      -"3000:3000"
