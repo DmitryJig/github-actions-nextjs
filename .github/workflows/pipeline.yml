@@ -28,7 +28,7 @@ jobs:
       #   run: npm run build
 
       - name: Build Docker image
-        run: docker-compose up --build
+        run: docker compose build
 
       # - name: Build Docker image
       #   run: docker build -t ${{ github.event.repository.name }} .
