@@ -1,3 +1,4 @@
+'use client'
 import { use } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -10,7 +11,6 @@ export const metadata: Metadata = {
 export default function CatalogPage(){
     const products = use(
         fetch(process.env.URL_PREFIX + '/api/v1/products', {
-            // fetch(`http://82.147.71.19/app/api/v1/products`, {
             next: { revalidate: 180 },
         })
         .then(response => response.json())
