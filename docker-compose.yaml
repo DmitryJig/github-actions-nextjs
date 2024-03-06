@@ -12,6 +12,6 @@ services:
       - shopnetwork
 
 networks:
-  shopnetwork:
-    name: shopnetwork
-    external: true
+  default:
+    external:
+      name: shopnetwork
