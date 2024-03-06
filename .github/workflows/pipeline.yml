@@ -31,11 +31,11 @@ jobs:
       # - name: build project
       #   run: npm run build
 
-      # - name: Build Docker image
-      #   run: docker compose build
-
       - name: Build Docker image
-        run: docker build --network shopnetwork -t ${{ github.event.repository.name }} .
+        run: docker compose build
+
+      # - name: Build Docker image
+      #   run: docker build --network shopnetwork -t ${{ github.event.repository.name }} .
 
       - name: Run Docker container
         run: docker run --net shopnetwork -e URL_PREFIX=http://172.24.0.12:8189/app --ip 172.24.0.13 --name ${{ github.event.repository.name }} -p 3000:3000 ${{ github.event.repository.name }}:latest
