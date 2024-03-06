@@ -1,15 +1,17 @@
 version: '3.9'
 
+services:
+  frontend:
+    build:
+      context: .
+      network: shopnetwork
+    container_name: github-actions-nextjs
+    ports:
+      - "3000:3000"
+    networks:
+      - shopnetwork
+
 networks:
   shopnetwork:
     name: shopnetwork
     external: true
-
-services:
-  frontend:
-    networks:
-      - shopnetwork
-    build: .
-    container_name: github-actions-nextjs
-    ports:
-      - "3000:3000"
