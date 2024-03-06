@@ -2,11 +2,11 @@ version: '3.8'
 
 services:
   frontend:
-    networks:
-      - shopnetwork
     build: .
     container_name: github-actions-nextjs
     ports:
       - "3000:3000"
 networks:
-  shopnetwork:
+  network1:
+    name: shopnetwork
+    external: true

@@ -16,19 +16,23 @@ jobs:
       # - name: Use Node.js
       #   run: npm ci
 
-      - name: Delete prev container
-        run: docker rm -f ${{ github.event.repository.name }}
-        continue-on-error: true
+      # - name: Delete prev container
+      #   run: docker rm -f ${{ github.event.repository.name }}
+      #   continue-on-error: true
+
+      # - name: Delete prev image
+      #   run: docker rmi ${{ github.event.repository.name }}
+      #   continue-on-error: true
 
       - name: Delete prev image
-        run: docker rmi ${{ github.event.repository.name }}
+        run: docker compose down
         continue-on-error: true
 
       # - name: build project
       #   run: npm run build
 
       - name: Build Docker image
-        run: docker compose build
+        run: docker compose up -d --build
 
       # - name: Build Docker image
       #   run: docker build -t ${{ github.event.repository.name }} .
