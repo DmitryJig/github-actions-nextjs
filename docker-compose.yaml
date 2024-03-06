@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 services:
   frontend:
@@ -10,6 +10,5 @@ services:
       - shopnetwork
 
 networks:
-  network1:
-    name: shopnetwork
+  shopnetwork:
     external: true
