@@ -37,5 +37,5 @@ jobs:
       - name: Build Docker image
         run: docker build -t ${{ github.event.repository.name }}:latest  .
 
-      # - name: Run Docker container
-      #   run: docker run --net shopnetwork -e URL_PREFIX=http://172.24.0.12:8189/app --ip 172.24.0.13 --name ${{ github.event.repository.name }} -p 3000:3000 ${{ github.event.repository.name }}:latest
+      - name: Run Docker container
+        run: docker run --net shopnetwork -e URL_PREFIX=http://172.24.0.12:8189/app --ip 172.24.0.13 --name ${{ github.event.repository.name }} -p 3000:3000 ${{ github.event.repository.name }}:latest
