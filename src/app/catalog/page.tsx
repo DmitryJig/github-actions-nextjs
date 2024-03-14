@@ -1,6 +1,6 @@
 import { use } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import CatalogItem from "@/components/catalog/CatalogItem";
 
 export const metadata: Metadata = {
     title: "Каталог сантехники и электротоваров в Перми",
@@ -10,19 +10,16 @@ export const metadata: Metadata = {
 export default function CatalogPage(){
     const products = use(
         fetch(process.env.URL_PREFIX + '/api/v1/products', {
-            next: { revalidate: 180 },
+            next: { revalidate: 10 },
         })
-        .then(response => response.json())
+        .then(response => {
+            return response.json()})
     )
     return (
         <div>
             <h1>Каталог товаров</h1>
             { products.map((product: any) => (
-            <li key={product.id}>
-                <Link href={`/catalog/${product.id}`}>
-                {product.title}
-                </Link>
-            </li>
+                <CatalogItem key={product.id} product={product}/>
         )) }
         </div>
     )

@@ -1,3 +1,4 @@
+import CatalogItem from "@/components/catalog/CatalogItem";
 import { Metadata } from "next";
 
 type Props = {
